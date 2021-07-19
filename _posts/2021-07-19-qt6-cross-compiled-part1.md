@@ -53,6 +53,22 @@ WORKDIR /home/${USER}
 Let's build our docker image with the following command:
 
 ```bash
-docker build --no-cache --build-arg USER=$(id -nu) --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t toolchain .
+docker build --no-cache --build-arg USER=$(id -nu) --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t toolchains .
 ```
 
+Let's create the container to build the toolchain and Qt6 based on the Docker image we just created.
+
+```bash
+docker create --name toolchain-qt6 -v /opt/toolchains/toolchains:/opt/toolchains -t toolchains:latest
+```
+
+Run the created container!
+
+```bash
+docker exec -it toolchain-qt6 zsh
+```
+
+>In this command, we are running the container and starting with the **ZSH** shell. If you want to use **Bash**, just replace the zsh parameter with bash.
+
+...
+>This post is not finished yet.
