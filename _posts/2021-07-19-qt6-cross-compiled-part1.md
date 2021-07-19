@@ -92,7 +92,7 @@ To learn about the architectures that crosstool-ng supports, run:
 ct-ng list-samples
 ```
 
-We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) PAX S920. A versão do processador deste dispositivo é o armv6.
+We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) **PAX S920**. A versão do processador deste dispositivo é o armv6.
 
 ```bash
 mkdir -p $HOME/src
@@ -141,7 +141,7 @@ ct-ng build.$(nproc)
 
 When finished, we will have the toolchain installed in the /opt/toolchains/arm-pax-linux-gnueabi folder.
 
-Now we are going to create a toolchain for another device. We will do it for Verifone v240m, which contains the armv7 processor which has some peculiarities in crosstool-ng, generating a little more difficulty.
+Now we are going to create a toolchain for another device. We will do it for **Verifone v240m**, which contains the armv7 processor which has some peculiarities in crosstool-ng, generating a little more difficulty.
 
 ```bash
 cd /opt/toolchains/builds
