@@ -12,11 +12,11 @@ Basic requirements for this post:
 * Any Linux distribution
 * Docker installed and properly configured
 
->I won't cover Docker installation in this post, a quick search on **Google** will help you easily.
+>I won't cover Docker installation in this post, a quick search on **Google** will help you easily. :smirk:
 
 ## Starting
 
-To make it easier for other users to use, let's create HOME for the toolset in **/opt** and change the folder owner to be our user.
+To make it easier for other users to use, let's create HOME for the toolchain in **/opt** and change the folder owner to be our user.
 
 ```bash
 sudo mkdir -p /opt/toolchains
@@ -59,18 +59,86 @@ docker build --no-cache --build-arg USER=$(id -nu) --build-arg UID=$(id -u) --bu
 Let's create the container to build the toolchain and Qt6 based on the Docker image we just created.
 
 ```bash
-docker create --name toolchain-qt6 -v /opt/toolchains:/opt/toolchains -t toolchains:latest
+docker create --name toolchain-qt6 -v /opt/toolchains:/opt/toolchains -v /opt/Qt:/opt/Qt -t toolchains:latest
 ```
 
->In the -v parameter, we are inserting the host's /opt/toolchains folder as the docker volume in /opt/toolchains. That way, everything done inside Docker will be exported to the host.
+>In the -v parameter, we are inserting the host's /opt/toolchains folder as the docker volume in /opt/toolchains. That way, everything done inside Docker will be exported to the host. _**We've also included the /opt/Qt folder where it should contain a host's Qt installation for the Qt6 build**_.
 
 Run the created container!
 
 ```bash
+docker start toolchain-qt6
 docker exec -it toolchain-qt6 zsh
 ```
 
 >In this command, we are running the container and starting with the **ZSH** shell. If you want to use **Bash**, just replace the zsh parameter with bash.
 
-...
->This post is not finished yet.
+When logging in for the first time with ZSH, I usually like to install the _**[oh my zsh](https://ohmyz.sh)**_ theme to make the shell more interesting.
+
+```bash
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+```
+
+Create toolchain build folder
+
+```bash
+mkdir -p /opt/toolchains/builds
+cd /opt/toolchains/builds
+```
+
+To learn about the architectures that crosstool-ng supports, run:
+
+```bash
+ct-ng list-samples
+```
+
+We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) PAX S920.
+
+```bash
+mkdir -p $HOME/src
+mkdir arm-unknown-linux-gnueabi && cd arm-unknown-linux-gnueabi
+ct-ng arm-unknown-linux-gnueabi
+```
+
+> With this command, we create a configuration file with basic instructions for the toolchain.
+
+To configure crosstool-ng use the command:
+
+```bash
+ct-ng menuconfig
+```
+
+With the command above, we will change the following options:
+
+* Paths and misc options:
+  * [ * ] Use obsolete features
+  * (\${CT_PREFIX:-/opt/toolchains}/\${CT_HOST:+HOST-\${CT_HOST}/}\${CT_TARGET}) Prefix directory
+* Toolchain options
+  * (pax) Tuple's vendor string
+* Operating System
+  * Version of linux (4.4.275)
+* Binary utilities
+  * Version of binutils (2.32)
+  * Linkers to enable (ld)
+* C-library
+  * Version of glibc (2.15 (OBSOLETE))
+* C compiler
+  * Version of gcc (8.5.0)
+* Debug facilities
+  * [ * ] duma
+  * [ * ] gdb
+  * [ * ] ltrace
+  * [ * ] strace
+
+> It is very important to combine _**binutils**_ versions with _**GCC**_. For this, a quick search can help you find the most suitable combination.
+**To avoid linking issues with libc, choose the same version included with the device in crosstool-ng.**
+
+To create the toolchain, run:
+
+```bash
+ct-ng build.$(nproc)
+```
+
+When finished, we will have the toolchain installed in the /opt/toolchains/arm-pax-linux-gnueabi folder.
+
+In the next post we will see how to compile Qt 6 with the toolchain we just generated. :sunglasses:
