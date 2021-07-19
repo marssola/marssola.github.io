@@ -168,6 +168,7 @@ With the command above, we will change the following options:
   * Version of glibc (2.15 (OBSOLETE))
   * [&nbsp;&nbsp;&nbsp;&nbsp;] Build libidn add-on
   * [&nbsp;&nbsp;&nbsp;&nbsp;] Build and install locales
+  * [&nbsp;&nbsp;&nbsp;&nbsp;] Enable -fcommon flag for older version of glibc when using GCC >=10
 * C compiler
   * Version of gcc (8.5.0)
   * [ * ] Optimize gcc libs for size
