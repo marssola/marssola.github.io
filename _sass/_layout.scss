@@ -7,8 +7,8 @@ body {
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    border-top: 5px solid rgb(118, 110, 97);
+    border-bottom: 1px solid rgb(54, 59, 61);
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -108,12 +108,9 @@ img[alt="emoji"] {
 /**
  * Site footer
  */
-.site-footer {
-    border-top-color: rgb(54, 59, 61);
-}
 
 .site-footer {
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid rgb(54, 59, 61);
     padding: $spacing-unit 0;
 }
 
