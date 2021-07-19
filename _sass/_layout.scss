@@ -218,8 +218,8 @@ img[alt="emoji"] {
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
+    font-size: 33px;
+    font-weight: 600;
     line-height: 1;
 
     @include media-query($on-laptop) {
