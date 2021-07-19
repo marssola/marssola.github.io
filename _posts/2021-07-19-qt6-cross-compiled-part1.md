@@ -12,7 +12,7 @@ Basic requirements for this post:
 * Any Linux distribution
 * Docker installed and properly configured
 
->I won't cover Docker installation in this post, a quick search on **Google** will help you easily. ![emoji](assets/img/emoji/smirk.png)
+>I won't cover Docker installation in this post, a quick search on **Google** will help you easily. ![emoji](/assets/img/emoji/smirk.png)
 
 ## Starting
 
@@ -141,4 +141,4 @@ ct-ng build.$(nproc)
 
 When finished, we will have the toolchain installed in the /opt/toolchains/arm-pax-linux-gnueabi folder.
 
-In the next post we will see how to compile Qt 6 with the toolchain we just generated. ![emoji](assets/img/emoji/sunglasses.png)
+In the next post we will see how to compile Qt 6 with the toolchain we just generated. ![emoji](/assets/img/emoji/sunglasses.png)
