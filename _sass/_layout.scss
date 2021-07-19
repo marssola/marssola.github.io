@@ -21,6 +21,7 @@ body {
     letter-spacing: -1px;
     margin-bottom: 0;
     float: left;
+    text-transform: uppercase;
 
     &,
     &:visited {
@@ -267,6 +268,6 @@ pre, code {
 }
 
 ::selection {
-    background-color: #004daa !important;
+    background-color: #84b5f5 !important;
     color: #e8e6e3 !important;
 }
