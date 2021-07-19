@@ -92,7 +92,7 @@ To learn about the architectures that crosstool-ng supports, run:
 ct-ng list-samples
 ```
 
-We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) PAX S920.
+We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) PAX S920. A versão do processador deste dispositivo é o armv6.
 
 ```bash
 mkdir -p $HOME/src
@@ -140,5 +140,50 @@ ct-ng build.$(nproc)
 ```
 
 When finished, we will have the toolchain installed in the /opt/toolchains/arm-pax-linux-gnueabi folder.
+
+Now we are going to create a toolchain for another device. We will do it for Verifone v240m, which contains the armv7 processor which has some peculiarities in crosstool-ng, generating a little more difficulty.
+
+```bash
+cd /opt/toolchains/builds
+mkdir -p arm-cortexa9_neon-linux-gnueabihf
+cd arm-cortexa9_neon-linux-gnueabihf
+ct-ng arm-cortexa9_neon-linux-gnueabihf
+ct-ng menuconfig
+```
+
+With the command above, we will change the following options:
+
+* Paths and misc options:
+  * [ * ] Use obsolete features
+  * [&nbsp;&nbsp;&nbsp;&nbsp;] Try features marked as EXPERIMENTAL
+  * (\${CT_PREFIX:-/opt/toolchains}/\${CT_HOST:+HOST-\${CT_HOST}/}\${CT_TARGET}) Prefix directory
+* Toolchain options
+  * (verifone) Tuple's vendor string
+* Operating System
+  * Version of linux (4.4.275)
+* Binary utilities
+  * Version of binutils (2.32)
+  * Linkers to enable (ld)
+* C-library
+  * Version of glibc (2.15 (OBSOLETE))
+  * [&nbsp;&nbsp;&nbsp;&nbsp;] Build libidn add-on
+  * [&nbsp;&nbsp;&nbsp;&nbsp;] Build and install locales
+* C compiler
+  * Version of gcc (8.5.0)
+  * [ * ] Optimize gcc libs for size
+  * < > Use sjlj for exceptions
+* Debug facilities
+  * [ * ] duma
+  * [ * ] gdb
+  * [ * ] ltrace
+  * [ * ] strace
+
+To create the toolchain, run:
+
+```bash
+ct-ng build.$(nproc)
+```
+
+When finished, we will have the toolchain installed in the /opt/toolchains/arm-verifone-linux-gnueabi folder.
 
 In the next post we will see how to compile Qt 6 with the toolchain we just generated. ![emoji](/assets/img/emoji/sunglasses.png)
