@@ -59,8 +59,10 @@ docker build --no-cache --build-arg USER=$(id -nu) --build-arg UID=$(id -u) --bu
 Let's create the container to build the toolchain and Qt6 based on the Docker image we just created.
 
 ```bash
-docker create --name toolchain-qt6 -v /opt/toolchains/toolchains:/opt/toolchains -t toolchains:latest
+docker create --name toolchain-qt6 -v /opt/toolchains:/opt/toolchains -t toolchains:latest
 ```
+
+>In the -v parameter, we are inserting the host's /opt/toolchains folder as the docker volume in /opt/toolchains. That way, everything done inside Docker will be exported to the host.
 
 Run the created container!
 
