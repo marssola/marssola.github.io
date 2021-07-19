@@ -107,10 +107,13 @@ a {
 /**
  * Blockquotes
  */
-blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
+
+ blockquote {
+    color: #828282;
+    border-left: 4px solid #e8e8e8;
+    background-color: ivory;
+    border-radius: 5px;
+    padding: 10px;
     font-size: 18px;
     letter-spacing: -1px;
     font-style: italic;
@@ -120,8 +123,6 @@ blockquote {
     }
 }
 
-
-
 /**
  * Code formatting
  */
@@ -130,7 +131,6 @@ code {
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
 }
 
 code {
