@@ -255,3 +255,21 @@ img[alt="emoji"] {
         }
     }
 }
+
+pre, code {
+    border-color: rgb(54, 59, 61);
+}
+
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
