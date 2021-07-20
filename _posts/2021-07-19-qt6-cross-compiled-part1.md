@@ -92,7 +92,7 @@ To learn about the architectures that crosstool-ng supports, run:
 ct-ng list-samples
 ```
 
-We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) **PAX S920**. A versão do processador deste dispositivo é o armv6.
+We will use the sample arm-unknown-linux-gnueabi as a base. The toolchain we will create will be for a POS device (Point-of-Sale) **PAX S920**. The processor version of this device is armv6.
 
 ```bash
 mkdir -p $HOME/src
