@@ -1,5 +1,5 @@
 ---
-title: Cross compile Qt6 for arm architecture with tolchain created by crosstool-ng (Docker) - Part 1
+title: Cross compile Qt 5.15.X and 6.X.X for arm architecture with tolchain created by crosstool-ng (Docker) - Part 1
 ---
 In this post we will see how to create a toolkit for arm architecture (v6, v7, ...) And it can be used for any architecture supported by crosstool-ng using Docker.
 
