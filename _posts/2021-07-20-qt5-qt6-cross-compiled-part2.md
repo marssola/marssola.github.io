@@ -5,17 +5,17 @@ In this post we will see how to cross-compile Qt 5.15.X with the toolchain we ge
 
 I recommend reading the following links for more details:
 
-* [Qt Configure options](https://doc.qt.io/qt-5/configure-options.html)
-* [Qt embedded for Linux](https://doc.qt.io/qt-5/embedded-linux.html)
-* [What is Qt Lite?](https://www.qt.io/blog/2017/05/31/qt-lite-qt-5-9-lts)
-* [Qt Lite options](https://qtlite.com)
+* [Qt Configure options](https://doc.qt.io/qt-5/configure-options.html){:target="_blank"}
+* [Qt embedded for Linux](https://doc.qt.io/qt-5/embedded-linux.html){:target="_blank"}
+* [What is Qt Lite?](https://www.qt.io/blog/2017/05/31/qt-lite-qt-5-9-lts){:target="_blank"}
+* [Qt Lite options](https://qtlite.com){:target="_blank"}
 
 ## Requirements
 
 Basic requirements for this post:
 
 * Have done the steps in part 1 of this post
-* Have the Qt 5.15.2 source downloaded in the /opt/Qt/5.15.2 folder, which can be done via the Maintenance Tool or download from this [link](https://download.qt.io/archive/qt/5.15/5.15.2/single)
+* Have the Qt 5.15.2 source downloaded in the /opt/Qt/5.15.2 folder, which can be done via the Maintenance Tool or download from this [link](https://download.qt.io/archive/qt/5.15/5.15.2/single){:target="_blank"}
 
 > In this post I won't explain what Qt Lite is and what each configure option means. For this, read the **links mentioned above**. ![emoji](/assets/img/emoji/smirk.png)
 
