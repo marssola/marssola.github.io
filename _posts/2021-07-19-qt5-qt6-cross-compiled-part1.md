@@ -27,14 +27,16 @@ cd /opt/toolchains
 Create the **Dockerfile** file with the following content:
 
 ```Dockerfile
-FROM ubuntu:18.04
+FROM ubuntu:20.04
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ARG USER
 ARG UID
 ARG GID
 
 RUN apt-get update
-RUN apt-get install --yes git build-essential gcc g++ gperf bison flex texinfo help2man make libncurses5-dev libisl-dev autoconf automake libtool libtool-bin gawk wget bzip2 xz-utils unzip patch curl libstdc++6 m4 binutils dh-autoreconf libcunit1-ncurses libexpat1-dev python-dev sudo zsh rsync vim
+RUN apt-get install --yes git build-essential gcc g++ gperf bison flex texinfo help2man make libncurses5-dev libisl-dev autoconf automake libtool libtool-bin gawk wget bzip2 xz-utils unzip patch curl libstdc++6 m4 binutils dh-autoreconf libcunit1-ncurses libexpat1-dev python-dev sudo zsh rsync vim cmake ninja-build libxkbcommon0 libgl1-mesa-dev libfontconfig1-dev libdbus-1-dev
 RUN apt-get clean --yes && rm -rf /var/lib/apt/lists/*
 
 ARG CROSSTOOL_NG_VERSION=master
@@ -59,7 +61,7 @@ docker build --no-cache --build-arg USER=$(id -nu) --build-arg UID=$(id -u) --bu
 Let's create the container to build the toolchain and Qt6 based on the Docker image we just created.
 
 ```bash
-docker create --name toolchain-qt6 -v /opt/toolchains:/opt/toolchains -v /opt/Qt:/opt/Qt -t toolchains:latest
+docker create --name toolchain-qt -v /opt/toolchains:/opt/toolchains -v /opt/Qt:/opt/Qt -t toolchains:latest
 ```
 
 >In the -v parameter, we are inserting the host's /opt/toolchains folder as the docker volume in /opt/toolchains. That way, everything done inside Docker will be exported to the host. _**We've also included the /opt/Qt folder where it should contain a host's Qt installation for the Qt6 build**_.
@@ -67,8 +69,8 @@ docker create --name toolchain-qt6 -v /opt/toolchains:/opt/toolchains -v /opt/Qt
 Run the created container!
 
 ```bash
-docker start toolchain-qt6
-docker exec -it toolchain-qt6 zsh
+docker start toolchain-qt
+docker exec -it toolchain-qt zsh
 ```
 
 >In this command, we are running the container and starting with the **ZSH** shell. If you want to use **Bash**, just replace the zsh parameter with bash.

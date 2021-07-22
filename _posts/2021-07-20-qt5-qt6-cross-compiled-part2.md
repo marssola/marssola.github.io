@@ -1,11 +1,11 @@
 ---
 title: Cross compile Qt 5.15.X and 6.X.X for arm architecture with tolchain created by crosstool-ng (Docker) - Part 2
 ---
-In this post we will see how to cross-compile Qt 5.15.X with the toolchain we generated in part 1 of this series.
+In this post we will see how to cross-compile Qt 5.15.2 with the toolchain we generated in part 1 of this series.
 
 I recommend reading the following links for more details:
 
-* [Qt Configure options](https://doc.qt.io/qt-5/configure-options.html){:target="_blank"}
+* [Qt5 Configure options](https://doc.qt.io/qt-5/configure-options.html){:target="_blank"}
 * [Qt embedded for Linux](https://doc.qt.io/qt-5/embedded-linux.html){:target="_blank"}
 * [What is Qt Lite?](https://www.qt.io/blog/2017/05/31/qt-lite-qt-5-9-lts){:target="_blank"}
 * [Qt Lite options](https://qtlite.com){:target="_blank"}
@@ -37,7 +37,7 @@ Create a folder inside qtbase/mkspecs/devices called `linux-arm-pos-g++` and the
 
 ```conf
 #
-# qmake configuration for linux-g++ using arm-cortex9-g++ compiler
+# qmake configuration for linux-g++ using linux-arm-pos-g++ compiler
 #
 
 MAKEFILE_GENERATOR      = UNIX
