@@ -1,5 +1,7 @@
 ---
 title: Cross compile Qt 5.15.X and 6.X.X for arm architecture with tolchain created by crosstool-ng (Docker) - Part 1
+category: Dev
+tags: [toolchain, docker, crosstool-ng, crosstool-NG, cross, cross-compile, arm, gcc, g++]
 ---
 In this post we will see how to create a toolchain for arm architecture (v6, v7, ...) And it can be used for any architecture supported by crosstool-ng using Docker.
 
@@ -187,6 +189,12 @@ To create the toolchain, run:
 ct-ng build.$(nproc)
 ```
 
-When finished, we will have the toolchain installed in the /opt/toolchains/arm-verifone-linux-gnueabi folder.
+When finished, we will have the toolchain installed in the /opt/toolchains/arm-verifone-linux-gnueabihf folder.
+
+After compiling the toolchain, you need to enter write permission on the toolchain:
+
+```bash
+chmod -R +w /opt/toolchains/arm-verifone-linus-gnueabihf
+```
 
 In the next post we will see how to compile Qt 5.15.2 with the toolchain we just generated. ![emoji](/assets/img/emoji/sunglasses.png)

@@ -1,5 +1,6 @@
 ---
 title: Cross compile Qt 5.15.X and 6.X.X for arm architecture with tolchain created by crosstool-ng (Docker) - Part 2
+tags: [toolchain, docker, crosstool-ng, crosstool-NG, cross, cross-compile, arm, gcc, g++, Qt, Qt5, Qt 5.15]
 ---
 In this post we will see how to cross-compile Qt 5.15.2 with the toolchain we generated in part 1 of this series.
 
