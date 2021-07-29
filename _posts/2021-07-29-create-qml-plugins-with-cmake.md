@@ -9,6 +9,11 @@ How to create C++ plugins for QML with CMake
 
 So far, Qt Creator allows you to create a new C++ plugin project for QML, but with qmake. This post will show you how to do it with CMake.
 
+I recommend reading the following links for more details:
+
+* [Overview - QML and C++ Integration](https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html){:target="_blank"}
+* [Integrating QML and C++](https://doc.qt.io/qt-6/qtqml-cppintegration-topic.html){:target="_blank"}
+
 ## Starting
 
 In:
